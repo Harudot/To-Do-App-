@@ -11,6 +11,7 @@ class ToDoDataBase {
     doToList = [
       ["Make Turorial", false],
       ["Do Exercise", false],
+      ["get work", false]
     ];
   }
 
