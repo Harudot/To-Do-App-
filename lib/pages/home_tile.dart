@@ -42,12 +42,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   void saveNewTask() {
-    setState(() {
-      db.doToList.add([_controller.text, false]);
-      _controller.clear();
-    });
-    Navigator.of(context).pop();
-    db.updateDataBase();
+    if (_controller.text.trim().isNotEmpty) {
+      setState(() {
+        db.doToList.add([_controller.text.trim(), false]);
+        _controller.clear();
+      });
+      Navigator.of(context).pop();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Task cannot be empty!",
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.yellow[300],
+        ),
+      );
+    }
   }
 
   //create a new task
